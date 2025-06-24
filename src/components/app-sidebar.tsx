@@ -13,7 +13,6 @@ import {
   Settings2,
   SquareTerminal,
 } from "lucide-react"
-
 import { NavMain } from "@/components/nav-main"
 import { NavProjects } from "@/components/nav-projects"
 import { NavUser } from "@/components/nav-user"
@@ -52,17 +51,17 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
+      title: "Dashboard",
       url: "#",
       icon: SquareTerminal,
       isActive: true,
       items: [
         {
-          title: "History",
+          title: "Analytics",
           url: "#",
         },
         {
-          title: "Starred",
+          title: "Reports",
           url: "#",
         },
         {
