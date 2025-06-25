@@ -7,7 +7,7 @@ import {
   Trash2,
   type LucideIcon,
 } from "lucide-react"
-
+import Link from "next/link"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,6 +24,8 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { TablerIcon } from "@tabler/icons-react"
+import { usePathname } from 'next/navigation'
 
 export function NavProjects({
   projects,
@@ -31,10 +33,11 @@ export function NavProjects({
   projects: {
     name: string
     url: string
-    icon: LucideIcon
+    icon: LucideIcon | TablerIcon
   }[]
 }) {
   const { isMobile } = useSidebar()
+  const pathname = usePathname()
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
@@ -42,11 +45,11 @@ export function NavProjects({
       <SidebarMenu>
         {projects.map((item) => (
           <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton asChild>
-              <a href={item.url}>
+            <SidebarMenuButton asChild isActive={pathname === item.url}>
+              <Link href={item.url}>
                 <item.icon />
                 <span>{item.name}</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

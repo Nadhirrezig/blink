@@ -1,16 +1,10 @@
-
 "use client"
 
 import * as React from "react"
 import {
   ArrowUpCircleIcon,
-  BarChartIcon,
-  CameraIcon,
   ClipboardListIcon,
   DatabaseIcon,
-  FileCodeIcon,
-  FileIcon,
-  FileTextIcon,
   HelpCircleIcon,
   LayoutDashboardIcon,
   SearchIcon,
@@ -38,83 +32,35 @@ import {
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
+    name: "Blink",
+    email: "support@blink.com",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/admin/dashboard",
       icon: LayoutDashboardIcon,
     },
     {
       title: "Orders",
-      url: "#",
+      url: "/admin/dashboard/orders",
       icon: IconToolsKitchen3,
     },
     {
       title: "Analytics",
-      url: "#",
+      url: "/admin/dashboard/analytics",
       icon: IconBrandGoogleAnalytics,
     },
     {
       title: "Menu Manager",
-      url: "#",
+      url: "/admin/dashboard/menu-manager",
       icon: IconClipboardText,
     },
     {
       title: "Team",
-      url: "#",
+      url: "/admin/dashboard/team",
       icon: UsersIcon,
-    },
-  ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: CameraIcon,
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Proposal",
-      icon: FileTextIcon,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: FileCodeIcon,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
     },
   ],
   navSecondary: [
@@ -136,7 +82,7 @@ const data = {
   ],
   documents: [
     {
-      name: "Data Library",
+      name: "Store stock",
       url: "#",
       icon: DatabaseIcon,
     },
@@ -144,11 +90,6 @@ const data = {
       name: "Reports",
       url: "#",
       icon: ClipboardListIcon,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: FileIcon,
     },
   ],
 }

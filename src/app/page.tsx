@@ -59,7 +59,7 @@ export default function Example() {
                 <span className="sr-only">BLINK</span>
                 <img
                   alt=""
-                  src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+                  src="/favicon.ico"
                   className="h-8 w-auto"
                 />
               </a>
