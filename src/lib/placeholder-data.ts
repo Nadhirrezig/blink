@@ -1,4 +1,4 @@
-import type { Order } from './definitions';
+import type { MenuItem, Order } from './definitions';
 
 export const placeholderOrders: Order[] = [
   {
@@ -40,3 +40,33 @@ export const placeholderOrders: Order[] = [
     status: 'paid',
   },
 ];
+export const placeholderItem : MenuItem[] = [
+  {
+    id: '1',
+    name: 'Expresso',
+    description: 'i though i would never come back to this place..',
+    price: 9.99,
+    imageUrl: '/coffee/express.png',
+  },
+  {
+    id: '2',
+    name: 'Flat White',
+    description: 'but here i find myself thinking about you',
+    price: 14.99,
+    imageUrl: '/coffee/flat-white.png',
+  },
+  {
+    id: '3',
+    name: 'Mochiato',
+    description: 'i know you dont like it but i do',
+    price: 19.99,
+    imageUrl: '/coffee/mochiato.png',
+  },
+  {
+    id: '4',
+    name: 'Mug Coffee',
+    description: 'we both know very well that it was our last time.',
+    price: 12.99,
+    imageUrl: '/coffee/mugcoffe.png',
+  },
+]

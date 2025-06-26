@@ -1,34 +1,13 @@
-export default function Page() {
+import Menusectioncard from "@/components/menusectioncard";
+import { placeholderItem } from "@/lib/placeholder-data";
+
+export default function MenuManager() {
     return (
         <div className="flex flex-1 flex-col">
             <div className="@container/main flex flex-1 flex-col gap-4">
-                <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-                    <div className="px-4 lg:px-6">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div className="bg-muted/50 aspect-video rounded-xl" />
-                            <div className="bg-muted/50 aspect-video rounded-xl" />
-                            <div className="bg-muted/50 aspect-video rounded-xl" />
-                        </div>
-                    </div>
-                </div>
-                <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-                    <div className="px-4 lg:px-6">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div className="bg-muted/50 aspect-video rounded-xl" />
-                            <div className="bg-muted/50 aspect-video rounded-xl" />
-                            <div className="bg-muted/50 aspect-video rounded-xl" />
-                        </div>
-                    </div>
-                </div>
-                <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-                    <div className="px-4 lg:px-6">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div className="bg-muted/50 aspect-video rounded-xl" />
-                            <div className="bg-muted/50 aspect-video rounded-xl" />
-                            <div className="bg-muted/50 aspect-video rounded-xl" />
-                        </div>
-                    </div>
-                </div>
+                <Menusectioncard items={placeholderItem} sectionName="Coffee" />
+                <Menusectioncard items={placeholderItem} sectionName="Food" />
+                <Menusectioncard items={placeholderItem} sectionName="Drinks" />
             </div>
         </div>
     );

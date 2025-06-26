@@ -2,6 +2,14 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+import Image from "next/image"
+
+interface MenuItemCardProps {
+  name: string;
+  imageUrl: string;
+  onClick?: () => void;
+}
+
 function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -13,6 +21,25 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
       {...props}
     />
   )
+}
+
+function MenuItemCard({ name, imageUrl, onClick }: MenuItemCardProps) {
+  return (
+    <div
+      onClick={onClick}
+      className="flex flex-col items-center justify-center rounded-xl bg-[#f8f8f8] p-4 shadow-sm hover:shadow-md cursor-pointer transition duration-200 ease-in-out"
+    >
+      <div className="relative w-20 h-20 mb-2">
+        <Image
+          src={imageUrl}
+          alt={name}
+          fill
+          className="object-contain rounded-md"
+        />
+      </div>
+      <p className="text-sm font-medium text-gray-800 capitalize">{name}</p>
+    </div>
+  );
 }
 
 function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
@@ -83,6 +110,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
 
 export {
   Card,
+  MenuItemCard,
   CardHeader,
   CardFooter,
   CardTitle,

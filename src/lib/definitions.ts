@@ -1,10 +1,10 @@
-export interface OrderItem {
+export type OrderItem = {
     name: string;
     quantity: number;
     details?: string;
 }
   
-export interface Order {
+export type Order = {
     id: string;
     tableNumber: number;
     orderCode: string;
@@ -14,8 +14,22 @@ export interface Order {
     total: number;
     status: 'pending' | 'paid';
 }
-  
-export interface TableData {
+
+export type MenuItem = {
+    id: string;
+    name: string;
+    description?: string;
+    price: number;
+    imageUrl: string;
+}
+
+export type MenuSection = {
+    id: string;
+    name: string;
+    items: MenuItem[];
+}
+
+export type TableData = {
   data: Order[];
   total: number;
 }
