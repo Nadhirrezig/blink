@@ -12,7 +12,7 @@ export default function DialogMenu({ open, setOpen }: AddMenuItemDialogProps) {
   return (
     <div className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-lg w-full max-w-md p-6 border border-gray-200" role="dialog" aria-modal="true">
       <button
-        className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold focus:outline-none"
+        className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold focus:outline-none cursor-pointer"
         onClick={() => setOpen(false)}
         aria-label="Close dialog"
       >
@@ -39,14 +39,14 @@ export default function DialogMenu({ open, setOpen }: AddMenuItemDialogProps) {
         <div className="flex justify-end gap-2 mt-4">
           <button
             type="button"
-            className="px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:outline-none"
+            className="px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:outline-none cursor-pointer"
             onClick={() => setOpen(false)}
           >
             Cancel
           </button>
           <button
             type="button"
-            className="px-4 py-2 rounded-md bg-blue-600 text-white font-semibold hover:bg-blue-700 focus:outline-none"
+            className="px-4 py-2 rounded-md bg-blue-600 text-white font-semibold hover:bg-blue-700 focus:outline-none cursor-pointer"
           >
             Add Item
           </button>
