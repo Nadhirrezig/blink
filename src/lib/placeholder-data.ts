@@ -1,4 +1,4 @@
-import type { MenuItem, Order } from './definitions';
+import type { MenuItem, Order, Category } from './definitions';
 
 export const placeholderOrders: Order[] = [
   {
@@ -6,38 +6,104 @@ export const placeholderOrders: Order[] = [
     tableNumber: 5,
     orderCode: 'ORD-001',
     items: [
-      { name: 'Pizza', quantity: 2, details: 'Large, extra cheese' },
-      { name: 'Coke', quantity: 3 },
+      {
+        id: 'item-1',
+        name: 'Pizza',
+        quantity: 2,
+        price: 20,
+        details: 'Large, extra cheese',
+      },
+      {
+        id: 'item-2',
+        name: 'Coke',
+        quantity: 3,
+        price: 2,
+      },
     ],
     subtotal: 40,
     discount: 5,
     total: 35,
     status: 'paid',
+    createdAt: new Date().toISOString(),
   },
   {
     id: '2',
     tableNumber: 3,
     orderCode: 'ORD-002',
     items: [
-      { name: 'Burger', quantity: 1 },
-      { name: 'Fries', quantity: 2, details: 'Large' },
+      {
+        id: 'item-3',
+        name: 'Burger',
+        quantity: 1,
+        price: 10,
+      },
+      {
+        id: 'item-4',
+        name: 'Fries',
+        quantity: 2,
+        price: 7.5,
+        details: 'Large',
+      },
     ],
     subtotal: 25,
     discount: 0,
     total: 25,
     status: 'pending',
+    createdAt: new Date().toISOString(),
   },
   {
     id: '3',
     tableNumber: 1,
     orderCode: 'ORD-003',
     items: [
-      { name: 'Salad', quantity: 1 },
+      {
+        id: 'item-5',
+        name: 'Salad',
+        quantity: 1,
+        price: 10,
+      },
     ],
     subtotal: 10,
     discount: 2,
     total: 8,
     status: 'paid',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: '4',
+    tableNumber: 21,
+    orderCode: 'ORD-004',
+    items: [
+      {
+        id: 'item-5',
+        name: 'Salad',
+        quantity: 1,
+        price: 10,
+      },
+    ],
+    subtotal: 10,
+    discount: 2,
+    total: 8,
+    status: 'paid',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: '5',
+    tableNumber: 1,
+    orderCode: 'ORD-005',
+    items: [
+      {
+        id: 'item-5',
+        name: 'Salad',
+        quantity: 1,
+        price: 10,
+      },
+    ],
+    subtotal: 10,
+    discount: 2,
+    total: 8,
+    status: 'paid',
+    createdAt: new Date().toISOString(),
   },
 ];
 
@@ -161,3 +227,34 @@ export const placeholderItem: MenuItem[] = [
     imageUrl: '/coffee/express.png',
   },
 ];
+
+export const placeholderCategories: Category[] = [
+    {
+      id: "beverages",
+      name: "Beverages",
+      imageUrl: "/coffee/express.png",
+      itemIds: placeholderItem
+        .filter(item => ["Espresso", "Flat White", "Macchiato", "Mug Coffee", "Cappuccino", "Latte", "Green Tea", "Chai Latte", "Earl Grey"]
+        .includes(item.name))
+        .map(item => item.id),
+    },
+    {
+      id: "lunch",
+      name: "Lunch & Snacks",
+      imageUrl: "/food/food.png",
+      itemIds: placeholderItem
+        .filter(item => ["Croissant", "Avocado Toast", "Breakfast Sandwich", "Quiche Lorraine"]
+        .includes(item.name))
+        .map(item => item.id),
+    },
+    {
+      id: "desserts",
+      name: "Desserts",
+      imageUrl: "/dessert/glace.png",
+      itemIds: placeholderItem
+        .filter(item => ["Tiramisu", "Chocolate Cake", "Cheesecake"]
+        .includes(item.name))
+        .map(item => item.id),
+    },
+];
+  

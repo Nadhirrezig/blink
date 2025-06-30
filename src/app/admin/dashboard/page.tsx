@@ -1,5 +1,5 @@
-import { SectionCards } from "@/components/sectioncard";
-import { ChartAreaInteractive } from "@/components/chart-area-interactive";
+import { SectionCards } from "@/components/dash-client/sectioncard";
+import { ChartAreaInteractive } from "@/components/dash-client/chart-area-interactive";
 export default function Page() {
     return (
         <>

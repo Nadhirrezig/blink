@@ -1,4 +1,4 @@
-import Menusectioncard from "@/components/menusectioncard";
+import Menusectioncard from "@/components/dash-client/menusectioncard";
 import { placeholderItem } from "@/lib/placeholder-data";
 
 export default function MenuManager() {

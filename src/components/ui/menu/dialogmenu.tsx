@@ -1,6 +1,6 @@
 'use client';
 import { Dispatch, SetStateAction } from 'react';
-import ImageUpload from '@/components/ui/imgaeupload';
+import ImageUpload from '@/components/ui/menu/imgaeupload';
 interface AddMenuItemDialogProps {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;

@@ -1,6 +1,6 @@
-import OrdersTable from "@/components/ui/table";
+import OrdersTable from "@/components/ui/dashboard/orders/table";
 
-export default function Page({ searchParams }: { searchParams: { page: string } }) {
+export default async function Page({ searchParams }: { searchParams: { page: string } }) {
     const currentPage = Number(searchParams?.page) || 1;
     return (
         <div className="flex flex-1 flex-col">

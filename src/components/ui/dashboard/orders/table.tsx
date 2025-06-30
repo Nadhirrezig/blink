@@ -1,4 +1,4 @@
-import Pagination from '@/components/ui/pagination';
+import Pagination from '@/components/ui/dashboard/orders/pagination';
 import { placeholderOrders } from '@/lib/placeholder-data';
 
 export default function OrdersTable({

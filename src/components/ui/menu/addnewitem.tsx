@@ -1,7 +1,7 @@
 'use client';
 import Image from "next/image";
 import { useState } from "react";
-import DialogMenu from "@/components/ui/dialogmenu";
+import DialogMenu from "@/components/ui/menu/dialogmenu";
 
 export default function AddNewItem() {
     const [open, setOpen] = useState(false);

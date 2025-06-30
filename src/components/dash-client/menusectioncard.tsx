@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { MenuItem } from '@/lib/definitions';
-import AddNewItem from '@/components/ui/addnewitem';
+import AddNewItem from '@/components/ui/menu/addnewitem';
 
 interface MenusectioncardProps {
   items: MenuItem[];

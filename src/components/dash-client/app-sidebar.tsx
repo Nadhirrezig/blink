@@ -17,9 +17,9 @@ import {
   IconBrandGoogleAnalytics,
 } from "@tabler/icons-react"
 import { NavProjects } from "./nav-projects"
-import { NavMain } from '@/components/nav-main'
+import { NavMain } from '@/components/dash-client/nav-main'
 import { NavSecondary } from "./nav-secondary"
-import { NavUser } from '@/components/nav-user'
+import { NavUser } from '@/components/dash-client/nav-user'
 import {
   Sidebar,
   SidebarContent,
@@ -28,7 +28,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/components/ui/sidebar'
+} from '@/components/ui/dashboard/sidebar'
 
 const data = {
   user: {
