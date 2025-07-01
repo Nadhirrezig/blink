@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { Category, MenuItem } from "@/lib/definitions";
-import { HeaderContent } from "@/components/ui/menu/header-content";
 import { MainContent } from "@/components/ui/menu/main-content";
 
 interface MenuClientProps {
@@ -24,27 +23,12 @@ export function MenuClient({
     router.push(`/client/${pointId}/menu/${catId}`);
   };
 
-  const handleBack = () => {
-    if (selectedCategory) {
-      router.push(`/client/${pointId}/menu`);
-    }
-  };
-
   return (
-    <>
-      <HeaderContent
-        pointId={pointId}
-        selectedCategory={selectedCategory}
-        categories={categories}
-        onBack={handleBack}
-      />
-      <MainContent
-        categories={selectedCategory ? categories.filter(c => c.id === selectedCategory) : categories}
-        selectedCategory={selectedCategory}
-        menuItems={menuItems}
-        onCategoryClick={handleCategoryClick}
-        onBack={handleBack}
-      />
-    </>
+    <MainContent
+      categories={selectedCategory ? categories.filter(c => c.id === selectedCategory) : categories}
+      selectedCategory={selectedCategory}
+      menuItems={menuItems}
+      onCategoryClick={handleCategoryClick}
+    />
   );
 } 

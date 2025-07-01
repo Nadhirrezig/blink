@@ -1,3 +1,4 @@
+'use client';
 import Image from "next/image";
 import React from "react";
 import type { Category, MenuItem } from "@/lib/definitions";
@@ -7,7 +8,6 @@ interface MainContentProps {
   selectedCategory: string | null;
   menuItems: MenuItem[];
   onCategoryClick: (catId: string) => void;
-  onBack: () => void;
 }
 
 export const MainContent: React.FC<MainContentProps> = ({
@@ -15,11 +15,10 @@ export const MainContent: React.FC<MainContentProps> = ({
   selectedCategory,
   menuItems,
   onCategoryClick,
-  onBack,
 }) => {
   return (
     <main
-      className={`flex-1 overflow-y-auto p-4 pb-20 ${selectedCategory ? 'pt-10' : 'pt-10'}`}
+      className={`flex-1 overflow-y-auto p-4 pb-20 ${selectedCategory ? 'pt-4' : 'pt-4'}`}
     >
       {!selectedCategory ? (
         <div className="flex flex-col gap-4 w-full max-w-full">

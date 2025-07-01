@@ -1,38 +1,33 @@
+'use client';
 import React from "react";
-import { IconArrowLeft } from "@tabler/icons-react";
+import { usePathname } from "next/navigation";
 import type { Category } from "@/lib/definitions";
-
 
 interface HeaderContentProps {
   pointId: string;
-  selectedCategory: string | null;
   categories: Category[];
-  onBack: () => void;
 }
 
 export const HeaderContent: React.FC<HeaderContentProps> = ({
   pointId,
-  selectedCategory,
   categories,
-  onBack,
 }) => {
+  const pathname = usePathname();
+  
+  // Extract category from pathname if we're on a category page
+  const categoryMatch = pathname.match(/\/menu\/([^\/]+)$/);
+  const selectedCategory = categoryMatch ? categoryMatch[1] : null;
+  
   const categoryName = selectedCategory
     ? categories.find((c) => c.id === selectedCategory)?.name
     : null;
 
   return (
-    <header className="px-6 pt-8 pb-4 bg-white/80 shadow-sm">
-      <div className="flex items-center gap-2 mb-4">
-        {selectedCategory && (
-          <button
-            onClick={onBack}
-            className="p-2 rounded-full bg-[#F7F8FB] hover:bg-[#EEA4CE]/20 text-[#1D1721] transition"
-            aria-label="Go Back"
-          >
-            <IconArrowLeft size={22} />
-          </button>
-        )}
-        <h1 className="text-lg font-semibold text-[#1D1721]">Welcome To <span className="text-[#EEA4CE] font-bold text-2xl uppercase ">{pointId}</span> Menu!</h1>
+    <header className="sticky top-0 z-30 px-6 pt-6 pb-4 bg-white/95 backdrop-blur-sm shadow-md border-b border-[#EEA4CE]/10">
+      <div className="flex items-center gap-2 mb-3">
+        <h1 className="text-lg font-semibold text-[#1D1721]">
+          Welcome To <span className="text-[#EEA4CE] font-bold text-2xl uppercase">{pointId}</span> Menu!
+        </h1>
       </div>
       <h2 className="text-base font-medium text-[#1D1721] opacity-80">
         {selectedCategory
