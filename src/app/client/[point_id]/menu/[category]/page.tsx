@@ -1,14 +1,14 @@
 import { notFound } from "next/navigation";
 import { placeholderCategories, placeholderItem } from "@/lib/placeholder-data";
 import { MenuClient } from "@/components/ui/menu/menu-client";
-import Link from "next/link";
 export default async function CategoryPage({ 
   params 
 }: { 
-  params: { point_id: string; category: string } 
+  params: Promise<{ point_id: string; category: string }>; 
 }) {
   await new Promise((resolve) => setTimeout(resolve, 2000));
-  const category = placeholderCategories.find(cat => cat.id === params.category);
+  const resolvedParams = await params;
+  const category = placeholderCategories.find(cat => cat.id === resolvedParams.category);
   if (!category) {
     notFound();
   }
@@ -19,7 +19,7 @@ export default async function CategoryPage({
 
   return (
     <MenuClient
-      pointId={params.point_id}
+      pointId={resolvedParams.point_id}
       categories={placeholderCategories}
       selectedCategory={category.id}
       menuItems={categoryItems}

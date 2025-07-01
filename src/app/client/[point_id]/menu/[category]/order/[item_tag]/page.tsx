@@ -3,12 +3,13 @@ import { placeholderItem, placeholderCategories } from '@/lib/placeholder-data';
 import OrderClient from '@/components/order/OrderClient';
 
 interface OrderPageProps {
-  params: { point_id: string; category: string; item_tag: string };
+  params: Promise<{ point_id: string; category: string; item_tag: string }>;
 }
 
 export default async function OrderPage({ params }: OrderPageProps) {
-  const item = placeholderItem.find(i => i.path_id === params.item_tag);
-  const category = placeholderCategories.find(cat => cat.id === params.category);
+  const resolvedParams = await params;
+  const item = placeholderItem.find(i => i.path_id === resolvedParams.item_tag);
+  const category = placeholderCategories.find(cat => cat.id === resolvedParams.category);
   if (!item || !category) return notFound();
 
   return (
