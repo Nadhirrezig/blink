@@ -21,6 +21,7 @@ export type Order = {
 
 export type MenuItem = {
   id: string;
+  path_id: string;
   name: string;
   description?: string;
   price: number;

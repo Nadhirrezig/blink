@@ -15,12 +15,15 @@ export function MenuClient({
   pointId,
   categories,
   selectedCategory,
-  menuItems
+  menuItems,
 }: MenuClientProps) {
   const router = useRouter();
 
   const handleCategoryClick = (catId: string) => {
     router.push(`/client/${pointId}/menu/${catId}`);
+  };
+  const onItemClick = (item: MenuItem) => {
+    router.push(`/client/${pointId}/menu/${selectedCategory}/order/${item.path_id}`);
   };
 
   return (
@@ -29,6 +32,7 @@ export function MenuClient({
       selectedCategory={selectedCategory}
       menuItems={menuItems}
       onCategoryClick={handleCategoryClick}
+      onItemClick={onItemClick}
     />
   );
-} 
+}

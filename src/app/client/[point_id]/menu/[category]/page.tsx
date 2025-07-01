@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { placeholderCategories, placeholderItem } from "@/lib/placeholder-data";
 import { MenuClient } from "@/components/ui/menu/menu-client";
-
+import Link from "next/link";
 export default async function CategoryPage({ 
   params 
 }: { 
