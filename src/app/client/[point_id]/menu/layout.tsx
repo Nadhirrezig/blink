@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import { ClientNav, ClientWrapper } from '@/components/ui/menu/client-nav';
 import { HeaderContent } from '@/components/ui/menu/header-content';
-import { placeholderCategories } from '@/lib/placeholder-data';
 
 export default async function ClientLayout({
   children,
@@ -18,7 +17,6 @@ export default async function ClientLayout({
       <ClientWrapper>
         <HeaderContent 
           pointId={point_id} 
-          categories={placeholderCategories} 
         />
         {children}
       </ClientWrapper>

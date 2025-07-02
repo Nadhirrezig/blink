@@ -1,5 +1,6 @@
+"use client";
 import { Coffee, CupSoda } from 'lucide-react';
-
+import { useEffect, useState } from 'react';
 interface OrderOptionsProps {
   mode: 'onsite' | 'takeaway';
   size: 's' | 'm' | 'l';
@@ -10,6 +11,15 @@ interface OrderOptionsProps {
 }
 
 export default function OrderOptions({ mode, size, sugar, onModeChange, onSizeChange, onSugarChange }: OrderOptionsProps) {
+  const [isTakeaway, setIsTakeaway] = useState(false);
+  useEffect(() => {
+    // Set isTakeaway true if mode is takeaway, false otherwise
+    if (mode === 'takeaway') {
+      setIsTakeaway(true);
+    } else {
+      setIsTakeaway(false);
+    }
+  }, [mode]);
   return (
     <section className="flex flex-col gap-6 w-full">
       {/* Mode Toggle */}
@@ -35,6 +45,7 @@ export default function OrderOptions({ mode, size, sugar, onModeChange, onSizeCh
         </div>
       </div>
       {/* Size Selector */}
+      {isTakeaway && (
       <div>
         <div className="text-sm font-medium text-[#1D1721] mb-2">Size</div>
         <div className="flex gap-4">
@@ -64,6 +75,7 @@ export default function OrderOptions({ mode, size, sugar, onModeChange, onSizeCh
           </button>
         </div>
       </div>
+      )}
       {/* Sugar Selector */}
       <div>
         <div className="text-sm font-medium text-[#1D1721] mb-2">Sugar</div>
