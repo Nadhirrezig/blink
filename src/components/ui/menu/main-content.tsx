@@ -7,8 +7,8 @@ interface MainContentProps {
   categories: Category[];
   selectedCategory: string | null;
   menuItems: MenuItem[];
-  onCategoryClick: (catId: string) => void;
-  onItemClick: (item: MenuItem) => void;
+  onCategoryClick?: (catId: string) => void;
+  onItemClick?: (item: MenuItem) => void;
 }
 
 export const MainContent: React.FC<MainContentProps> = ({
@@ -27,7 +27,7 @@ export const MainContent: React.FC<MainContentProps> = ({
           {categories.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => onCategoryClick(cat.id)}
+              onClick={() => onCategoryClick?.(cat.id)}
               className="flex items-center justify-between bg-white rounded-2xl px-4 py-4 shadow hover:scale-[1.01] transition group border border-[#E5E7EB]"
             >
               <div className="flex items-center gap-4">
@@ -53,7 +53,7 @@ export const MainContent: React.FC<MainContentProps> = ({
             <button
               key={item.id}
               className="flex flex-col items-center bg-white rounded-2xl py-6 px-2 shadow hover:scale-[1.03] transition border border-[#E5E7EB] cursor-pointer"
-              onClick={() => onItemClick(item)}
+              onClick={() => onItemClick?.(item)}
             >
               <div className="relative" style={{ width: 80, height: 80 }}>
                 <Image

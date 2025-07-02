@@ -1,7 +1,8 @@
 import OrdersTable from "@/components/ui/dashboard/orders/table";
 
-export default async function Page({ searchParams }: { searchParams: { page: string } }) {
-    const currentPage = Number(searchParams?.page) || 1;
+export default async function Page({ searchParams }: { searchParams: Promise<{ page: string }> }) {
+    const pageparams = await searchParams;
+    const currentPage = Number(pageparams?.page) || 1;
     return (
         <div className="flex flex-1 flex-col">
             <div className="@container/main flex flex-1 flex-col gap-2">
