@@ -1,56 +1,133 @@
-export type OrderItem = {
-  id: string;
+// ---- ENUMS ----
+export type OrderStatus = 'Pending' | 'Preparing' | 'Served' | 'Paid' | 'Cancelled';
+export type TableStatus = 'Free' | 'Occupied' | 'Reserved' | 'Cleaning';
+
+// ---- OWNER ----
+export interface Owner {
+  userId: string; // UUID
   name: string;
-  quantity: number;
-  price: number; 
-  details?: string;
+  email: string;
+  phoneNumber: string;
+  passwordHash: string;
+  lastLogin: Date;
+  subscriptionPlan: string;
+  profiles: Profile[];
 }
 
-export type Order = {
-  id: string;
-  tableNumber: number;
-  orderCode: string;
+// ---- PROFILE ----
+export interface Profile {
+  profileId: string; // UUID
+  ownerId: string; // UUID
+  name: string;
+  description: string;
+  location: string;
+  coordX: number; // maps
+  coordY: number; // maps
+  phone: string;
+  email: string;
+  team: Waiter[];
+  menu: Category[];
+  tables: Table[];
+  stock: StockItem[];
+  posts: Post[];
+  reviews: Review[];
+}
+
+// ---- CATEGORY & MENU ITEM ----
+export interface Category {
+  catId: string; // UUID
+  name: string;
+  description?: string;
+  imageUrl: string;
+  items: MenuItem[];
+}
+
+export interface MenuItem {
+  itemId: string; // UUID
+  name: string;
+  description: string;
+  price: number;
+  costPrice: number;
+  stockQty: number;
+  isAvailable: boolean;
+  imageUrl: string;
+}
+
+// ---- ORDER ----
+export interface Order {
+  orderId: string; // UUID
+  profileId: string; // UUID
+  tableId: string; // UUID
+  waiterId?: string; // UUID
+  createdAt: Date;
+  updatedAt: Date;
   items: OrderItem[];
   subtotal: number;
   discount: number;
   total: number;
-  status: 'pending' | 'preparing' | 'served' | 'paid' | 'cancelled';
-  createdAt: string;
-  updatedAt?: string;
+  status: OrderStatus;
 }
 
-export type MenuItem = {
-  id: string;
-  path_id: string;
+export interface OrderItem {
+  itemId: string; // UUID
   name: string;
-  description?: string;
-  price: number;
-  imageUrl: string;
-  isAvailable?: boolean;  
-  tags?: string[];      
-  categoryId?: string;
+  quantity: number;
+  unitPrice: number;
+  details: string;
 }
 
-export type MenuSection = {
-  id: string;
+// ---- TABLE ----
+export interface Table {
+  tableId: string; // UUID
+  profileId: string; // UUID
+  tableNumber: number;
+  status: TableStatus;
+  currentOrderId: string;
+}
+
+// ---- WAITER ----
+export interface Waiter {
+  waiterId: string; // UUID
+  profileId: string; // UUID
   name: string;
-  items: MenuItem[];
+  pin: string;
 }
 
-export type TableData<T> = {
-  data: T[];
-  total: number;
-}
-
-export type Category = {
-  id: string;
+// ---- STOCK ----
+export interface StockItem {
+  itemId: string; // UUID
   name: string;
-  imageUrl: string;
-  itemIds: string[];
+  quantity: number;
+  threshold: number;
 }
 
-export type Point = {
-  id: string;
-  name: string;
-  categories: Category[];
+// ---- POSTS & REVIEWS ----
+export interface Post {
+  postId: string; // UUID
+  profileId: string; // UUID
+  content: string;
+  imageUrl?: string;
+  createdAt: Date;
+}
+
+export interface Review {
+  reviewId: string; // UUID
+  profileId: string; // UUID
+  rating: number;
+  comment: string;
+  createdAt: Date;
+}
+
+// ---- ANALYTICS ----
+export interface Analytics {
+  totalRevenue: number;
+  totalOrders: number;
+  averageOrderValue: number;
+  topItems: MenuItem[];
+  orderTrends: MostOrderedItemTrend[];
+}
+
+export interface MostOrderedItemTrend {
+  item: MenuItem;
+  orderCount: number;
 }

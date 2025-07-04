@@ -21,10 +21,10 @@ export default function OrdersTable({
         <div className="rounded-lg bg-white p-4 shadow">
           <div className="md:hidden space-y-4">
             {paginatedOrders.map((order) => (
-              <div key={order.id} className="rounded-md border p-4 shadow-sm">
+              <div key={order.orderId} className="rounded-md border p-4 shadow-sm">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="font-semibold">Table {order.tableNumber}</span>
-                  <span className="text-xs text-gray-500">{order.orderCode}</span>
+                  <span className="font-semibold">Table {order.tableId}</span>
+                  <span className="text-xs text-gray-500">{order.orderId}</span>
                 </div>
                 <ul className="text-sm text-gray-700 divide-y divide-gray-200 border rounded-md mb-2 overflow-hidden">
                   {order.items.map((item, i) => (
@@ -44,7 +44,7 @@ export default function OrdersTable({
                     Status:{' '}
                     <span
                       className={`inline-block rounded-full px-2 py-1 text-xs font-medium ${
-                        order.status === 'paid'
+                        order.status === 'Paid'
                           ? 'bg-green-100 text-green-800'
                           : 'bg-yellow-100 text-yellow-800'
                       }`}
@@ -70,9 +70,9 @@ export default function OrdersTable({
             </thead>
             <tbody>
               {paginatedOrders.map((order) => (
-                <tr key={order.id} className="border-b last:border-none hover:bg-gray-50 ">
-                  <td className="px-4 py-4 font-medium">Table {order.tableNumber}</td>
-                  <td className="px-4 py-4 text-gray-600">{order.orderCode}</td>
+                <tr key={order.orderId} className="border-b last:border-none hover:bg-gray-50 ">
+                  <td className="px-4 py-4 font-medium">Table {order.tableId}</td>
+                  <td className="px-4 py-4 text-gray-600">{order.orderId}</td>
                   <td className="px-4 py-4">
                     <ul className="space-y-1">
                       {order.items.map((item, i) => (
@@ -91,7 +91,7 @@ export default function OrdersTable({
                   <td className="px-4 py-4">
                     <span
                       className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${
-                        order.status === 'paid'
+                        order.status === 'Paid'
                           ? 'bg-green-100 text-green-800'
                           : 'bg-yellow-100 text-yellow-800'
                       }`}

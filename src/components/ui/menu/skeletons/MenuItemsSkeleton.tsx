@@ -1,7 +1,7 @@
 import React from "react";
-import { placeholderItem} from "@/lib/placeholder-data";
+import { placeholderMenuItems } from "@/lib/placeholder-data";
 export function MenuItemsSkeleton() {
-  const items = placeholderItem.length;
+  const items = placeholderMenuItems.length;
   return (
     <div className="grid grid-cols-2 gap-6 mt-4">
       {[...Array(items)].map((_, i) => (

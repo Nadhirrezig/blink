@@ -26,15 +26,19 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuButton,
 } from '@/components/ui/dashboard/sidebar'
+import { owners } from "@/lib/placeholder-data"
+
+const owner = owners[0] // Using the first owner as the logged-in user
 
 const data = {
   user: {
-    name: "Blink",
-    email: "support@blink.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: owner.name,
+    email: owner.email,
+    avatar: "/avatars/shadcn.jpg", // You might want to add avatar to the Owner type
+    profiles: owner.profiles,
   },
   navMain: [
     {
@@ -106,14 +110,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             >
               <a href="#">
                 <ArrowUpCircleIcon className="h-5 w-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+                <span className="text-base font-semibold">Blink</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain}  />
+        <NavMain items={data.navMain} />
         <NavProjects projects={data.documents} />
       </SidebarContent>
       <SidebarFooter>

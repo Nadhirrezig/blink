@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { placeholderItem, placeholderCategories } from '@/lib/placeholder-data';
+import { placeholderProfiles } from '@/lib/placeholder-data';
 import OrderClient from '@/components/order/OrderClient';
 
 interface OrderPageProps {
@@ -8,8 +8,15 @@ interface OrderPageProps {
 
 export default async function OrderPage({ params }: OrderPageProps) {
   const resolvedParams = await params;
-  const item = placeholderItem.find(i => i.path_id === resolvedParams.item_tag);
-  const category = placeholderCategories.find(cat => cat.id === resolvedParams.category);
+  
+  // Find the profile first
+  const profile = placeholderProfiles[0]; // For now using first profile, should be based on point_id
+  if (!profile) return notFound();
+
+  // Find the category and item
+  const category = profile.menu.find(cat => cat.catId === resolvedParams.category);
+  const item = category?.items.find(i => i.itemId === resolvedParams.item_tag);
+  
   if (!item || !category) return notFound();
 
   return (

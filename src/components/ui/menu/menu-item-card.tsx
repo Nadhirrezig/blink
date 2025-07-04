@@ -36,7 +36,7 @@ export default function MenuItemCard({
 
         {/* Favorite button */}
         <button
-          onClick={() => onToggleFavorite(item.id)}
+          onClick={() => onToggleFavorite(item.itemId)}
           aria-label="Toggle Favorite"
           className={`absolute top-2 right-2 p-2 rounded-full shadow-sm transition-colors ${
             isFavorite

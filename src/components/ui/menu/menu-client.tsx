@@ -1,34 +1,33 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { Category, MenuItem } from "@/lib/definitions";
+import { Profile, MenuItem } from "@/lib/definitions";
 import { MainContent } from "@/components/ui/menu/main-content";
 
 interface MenuClientProps {
-  pointId: string;
-  categories: Category[];
+  profile: Profile;
   selectedCategory: string | null;
   menuItems: MenuItem[];
 }
 
 export function MenuClient({ 
-  pointId,
-  categories,
+  profile,
   selectedCategory,
   menuItems,
 }: MenuClientProps) {
   const router = useRouter();
 
   const handleCategoryClick = (catId: string) => {
-    router.push(`/client/${pointId}/menu/${catId}`);
+    router.push(`/client/${profile.profileId}/menu/${catId}`);
   };
+
   const onItemClick = (item: MenuItem) => {
-    router.push(`/client/${pointId}/menu/${selectedCategory}/order/${item.path_id}`);
+    router.push(`/client/${profile.profileId}/menu/${selectedCategory}/order/${item.itemId}`);
   };
 
   return (
     <MainContent
-      categories={selectedCategory ? categories.filter(c => c.id === selectedCategory) : categories}
+      categories={selectedCategory ? profile.menu.filter(c => c.catId === selectedCategory) : profile.menu}
       selectedCategory={selectedCategory}
       menuItems={menuItems}
       onCategoryClick={handleCategoryClick}
