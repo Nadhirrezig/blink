@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
-import { placeholderProfiles } from '@/lib/placeholder-data';
+import { fetchProfileByPointId } from '@/lib/data/profiles';
+import { fetchCategoryById } from '@/lib/data/categories';
 import OrderClient from '@/components/order/OrderClient';
 
 interface OrderPageProps {
@@ -9,12 +10,12 @@ interface OrderPageProps {
 export default async function OrderPage({ params }: OrderPageProps) {
   const resolvedParams = await params;
   
-  // Find the profile based on point_id
-  const profile = placeholderProfiles.find(p => p.profileId === resolvedParams.point_id);
+  // Fetch the profile based on point_id
+  const profile = await fetchProfileByPointId(resolvedParams.point_id);
   
   if (!profile) return notFound();
 
-  const category = profile.menu.find(cat => cat.catId === resolvedParams.category);
+  const category = await fetchCategoryById(resolvedParams.category);
   
   if (!category) return notFound();
 

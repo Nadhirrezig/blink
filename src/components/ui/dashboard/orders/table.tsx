@@ -1,26 +1,24 @@
 import Pagination from '@/components/ui/dashboard/orders/pagination';
-import { placeholderOrders } from '@/lib/placeholder-data';
+import { Order } from '@/lib/definitions';
 
 export default function OrdersTable({
   query,
   currentPage,
+  orders,
+  totalPages,
 }: {
   query: string;
   currentPage: number;
+  orders: Order[];
+  totalPages: number;
 }) {
-  const ordersPerPage = 6;
-  const totalPages = Math.ceil(placeholderOrders.length / ordersPerPage);
-  const paginatedOrders = placeholderOrders.slice(
-    (currentPage - 1) * ordersPerPage,
-    currentPage * ordersPerPage
-  );
 
   return (
     <div className="mt-6 flow-root">
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-white p-4 shadow">
           <div className="md:hidden space-y-4">
-            {paginatedOrders.map((order) => (
+            {orders.map((order) => (
               <div key={order.orderId} className="rounded-md border p-4 shadow-sm">
                 <div className="flex justify-between items-center mb-2">
                   <span className="font-semibold">Table {order.tableId}</span>
@@ -69,7 +67,7 @@ export default function OrdersTable({
               </tr>
             </thead>
             <tbody>
-              {paginatedOrders.map((order) => (
+              {orders.map((order) => (
                 <tr key={order.orderId} className="border-b last:border-none hover:bg-gray-50 ">
                   <td className="px-4 py-4 font-medium">Table {order.tableId}</td>
                   <td className="px-4 py-4 text-gray-600">{order.orderId}</td>

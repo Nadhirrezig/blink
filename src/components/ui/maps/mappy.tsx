@@ -8,24 +8,27 @@ import { Input } from '@/components/ui/input'
 import { Card, CardContent } from '@/components/ui/dashboard/card'
 import { Badge } from '@/components/ui/badge'
 import { useIsMobile } from '@/hooks/use-mobile'
-import { placeholderProfiles } from '@/lib/placeholder-data'
+import { Profile } from '@/lib/definitions'
 import Link from 'next/link'
 
-// Transform profiles into store format
-const stores = placeholderProfiles.map(profile => ({
-  id: profile.profileId,
-  name: profile.name,
-  position: { lat: profile.coordX, lng: profile.coordY },
-  address: profile.location,
-  phone: profile.phone,
-  hours: '7:00 AM - 10:00 PM', // This should come from profile data in the future
-  rating: 4.8, // This should be calculated from profile.reviews
-  reviews: profile.reviews.length,
-  status: 'open', // This should be determined by business hours
-  category: profile.menu[0]?.name || 'Restaurant' // Using first category as main type
-}))
+interface MapPageProps {
+  profiles: Profile[];
+}
 
-export default function MapPage() {
+export default function MapPage({ profiles }: MapPageProps) {
+  // Transform profiles into store format
+  const stores = profiles.map(profile => ({
+    id: profile.profileId,
+    name: profile.name,
+    position: { lat: profile.coordX, lng: profile.coordY },
+    address: profile.location,
+    phone: profile.phone,
+    hours: '7:00 AM - 10:00 PM', // This should come from profile data in the future
+    rating: 4.8, // This should be calculated from profile.reviews
+    reviews: profile.reviews.length,
+    status: 'open', // This should be determined by business hours
+    category: profile.menu[0]?.name || 'Restaurant' // Using first category as main type
+  }))
   const [selectedStore, setSelectedStore] = useState<typeof stores[0] | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [viewMode, setViewMode] = useState<'map' | 'list'>('map')

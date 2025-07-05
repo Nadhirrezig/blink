@@ -1,14 +1,24 @@
 import OrdersTable from "@/components/ui/dashboard/orders/table";
+import { fetchPaginatedOrders } from "@/lib/data/orders";
 
 export default async function Page({ searchParams }: { searchParams: Promise<{ page: string }> }) {
     const pageparams = await searchParams;
     const currentPage = Number(pageparams?.page) || 1;
+    
+    // Fetch paginated orders for the first profile (in real app, this would be the current user's profile)
+    const { orders, total, totalPages } = await fetchPaginatedOrders('profile-1', currentPage, 10);
+    
     return (
         <div className="flex flex-1 flex-col">
             <div className="@container/main flex flex-1 flex-col gap-2">
                 <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
                     <div className="px-4 lg:px-6">
-                        <OrdersTable query="" currentPage={currentPage} />
+                        <OrdersTable 
+                            query="" 
+                            currentPage={currentPage} 
+                            orders={orders}
+                            totalPages={totalPages}
+                        />
                     </div>
                 </div>
                 <div className="px-4 lg:px-6">

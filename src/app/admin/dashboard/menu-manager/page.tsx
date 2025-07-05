@@ -1,13 +1,15 @@
 import { MainContent } from "@/components/ui/menu/main-content";
-import { placeholderProfiles } from "@/lib/placeholder-data";
+import { fetchProfiles } from "@/lib/data/profiles";
 import { Category } from "@/lib/definitions";
 import AddNewItem from "@/components/ui/menu/addnewitem";
 
-export default function MenuManager() {
+export default async function MenuManager() {
+    const profiles = await fetchProfiles();
+    
     return (
         <div className="flex flex-1 flex-col">
             <div className="@container/main flex flex-1 flex-col gap-4">
-                {placeholderProfiles.map((profile) => (
+                {profiles.map((profile) => (
                     <div key={profile.profileId} className="mb-8">
                         <h1 className="text-2xl font-bold mb-6 text-center text-[#EEA4CE]">
                             {profile.name}
