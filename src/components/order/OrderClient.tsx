@@ -5,14 +5,13 @@ import ProductDisplay from './ProductDisplay';
 import OrderOptions from './OrderOptions';
 import OrderSummary from './OrderSummary';
 import AdditionalOptions from './AdditionalOptions';
-import type { MenuItem, Category } from '@/lib/definitions';
+import type { MenuItem } from '@/lib/definitions';
 
 interface OrderClientProps {
   item: MenuItem;
-  category: Category;
 }
 
-export default function OrderClient({ item, category }: OrderClientProps) {
+export default function OrderClient({ item }: OrderClientProps) {
   const [quantity, setQuantity] = useState(1);
   const [mode, setMode] = useState<'onsite' | 'takeaway'>('onsite');
   const [size, setSize] = useState<'s' | 'm' | 'l'>('m');

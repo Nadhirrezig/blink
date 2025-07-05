@@ -228,14 +228,13 @@ export default function MapPage() {
                       <Phone className="w-4 h-4 text-gray-400" />
                       <span className="text-sm text-gray-600">{selectedStore.phone}</span>
                     </div>
-                    <Link 
-                      href={`/client/${selectedStore.id}/menu`} 
-                      className="w-full"
-                    >
-                      <Button className="w-full text-sm transition-all duration-200 hover:bg-primary/90 mt-4" size="sm">
+                      <Button
+                        size="sm"
+                        className="mt-4 w-full cursor-pointer"
+                        onClick={() => window.location.href = `/${selectedStore.id}/menu`}
+                      >
                         View Menu
                       </Button>
-                    </Link>
                   </div>
                 </InfoWindow>
               )}
@@ -271,9 +270,13 @@ export default function MapPage() {
                           </div>
                         </div>
                       </div>
-                      <Button size="sm" className="ml-4">
-                        View Menu
-                      </Button>
+                        <Button
+                          size="sm"
+                          className="ml-4 cursor-pointer"
+                          onClick={() => window.location.href = `/${store.id}/menu`}
+                        >
+                          View Menu
+                        </Button>
                     </div>
                   </CardContent>
                 </Card>

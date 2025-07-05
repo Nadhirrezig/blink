@@ -17,13 +17,31 @@ export const HeaderContent: React.FC<HeaderContentProps> = ({
   const segments = pathname.split('/').filter(Boolean)
   const depth = segments.length
 
-  const showBack = depth > 3 // Show back button if depth is greater than 3
-  const stepTitles = [
-    'Select Category',
-    `Select Your ${'Item'}`,
-    'Customize Your Order',
-  ]
-  const stepTitle = stepTitles[depth - 4]
+  // More robust back button logic
+  const showBack = depth > 2 // Show back button if we're deeper than just the profile
+
+  // Better step title logic based on path structure
+  const getStepTitle = () => {
+    // /profile-1/menu (depth 2) - Select Category
+    if (depth === 2 && segments[1] === 'menu') {
+      return 'Select Category'
+    }
+    
+    // /profile-1/menu/cat-1 (depth 3) - Select Your Item
+    if (depth === 3 && segments[1] === 'menu') {
+      return 'Select Your Item'
+    }
+    
+    // /profile-1/menu/cat-1/order/espresso (depth 5) - Customize Your Order
+    if (depth === 5 && segments[1] === 'menu' && segments[3] === 'order') {
+      return 'Customize Your Order'
+    }
+    
+    // Fallback
+    return 'Menu'
+  }
+
+  const stepTitle = getStepTitle()
 
   return (
     <header className="sticky top-0 z-30 px-6 pt-6 pb-4 bg-white/95 backdrop-blur-sm shadow-md border-b border-[#EEA4CE]/10">

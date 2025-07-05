@@ -31,7 +31,9 @@ import {
 } from '@/components/ui/dashboard/sidebar'
 import { owners } from "@/lib/placeholder-data"
 
-const owner = owners[0] // Using the first owner as the logged-in user
+// For now, using the first owner as the logged-in user
+// In a real app, this would come from authentication context
+const owner = owners[0]
 
 const data = {
   user: {

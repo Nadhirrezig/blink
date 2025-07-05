@@ -18,11 +18,11 @@ export function MenuClient({
   const router = useRouter();
 
   const handleCategoryClick = (catId: string) => {
-    router.push(`/client/${profile.profileId}/menu/${catId}`);
+    router.push(`/${profile.profileId}/menu/${catId}`);
   };
 
   const onItemClick = (item: MenuItem) => {
-    router.push(`/client/${profile.profileId}/menu/${selectedCategory}/order/${item.itemId}`);
+    router.push(`/${profile.profileId}/menu/${selectedCategory}/order/${item.itemId}`);
   };
 
   return (

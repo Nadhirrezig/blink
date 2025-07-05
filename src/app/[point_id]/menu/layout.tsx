@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
-import { ClientNav, ClientWrapper } from '@/components/ui/menu/client-nav';
+import { ClientWrapper } from '@/components/ui/menu/client-nav';
 import { HeaderContent } from '@/components/ui/menu/header-content';
+import { NavLinks } from '@/components/ui/menu/deskNav';
 
 export default async function ClientLayout({
   children,
@@ -10,10 +11,10 @@ export default async function ClientLayout({
   params: Promise<{ point_id: string }>;
 }) {
   const { point_id } = await params;
-  
+
   return (
     <div className="min-h-screen flex bg-[#F7F8FB]">
-      <ClientNav />
+      <NavLinks/>
       <ClientWrapper>
         <HeaderContent 
           pointId={point_id} 

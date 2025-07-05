@@ -26,7 +26,7 @@ export default function Error({
           Try again
         </button>
         <Link
-          href="/client/map"
+          href="/map"
           className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
         >
           Return to Map
