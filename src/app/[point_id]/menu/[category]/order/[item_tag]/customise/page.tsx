@@ -1,13 +1,13 @@
 import { notFound } from 'next/navigation';
 import { fetchProfileByPointId } from '@/lib/data/profiles';
 import { fetchCategoryById } from '@/lib/data/categories';
-import StandardOrderClient from '@/components/orders/standard/StandardOrderClient';
+import BlinkOrderClient from '@/components/orders/blink/BlinkOrderClient';
 
-interface OrderPageProps {
+interface CustomisePageProps {
   params: Promise<{ point_id: string; category: string; item_tag: string }>;
 }
 
-export default async function OrderPage({ params }: OrderPageProps) {
+export default async function CustomisePage({ params }: CustomisePageProps) {
   const resolvedParams = await params;
   
   // Fetch the profile based on point_id
@@ -44,6 +44,6 @@ export default async function OrderPage({ params }: OrderPageProps) {
   if (!item) return notFound();
 
   return (
-    <StandardOrderClient item={item} />
+    <BlinkOrderClient item={item} />
   );
 }

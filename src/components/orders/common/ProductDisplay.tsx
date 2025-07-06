@@ -16,7 +16,7 @@ export default function ProductDisplay({ name, imageUrl, quantity, onQuantityCha
   };
   return (
     <div className="flex flex-col items-center gap-4 py-4">
-      <img src={imageUrl} alt={name} className="w-24 h-24 object-contain rounded-xl shadow-md bg-gradient-to-br from-[#EEA4CE] to-[#BBEED1]" />
+      <img src={imageUrl} alt={name} className="w-24 h-24 object-contain rounded-xl shadow-md bg-[#F7F8FB]" />
       <h2 className="text-xl font-bold text-[#1D1721]">{name}</h2>
       <div className="flex items-center gap-4 mt-2">
         <button

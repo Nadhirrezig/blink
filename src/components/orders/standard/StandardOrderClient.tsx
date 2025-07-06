@@ -1,21 +1,28 @@
 'use client';
-import { useState } from 'react';
-import OrderHeader from './OrderHeader';
-import ProductDisplay from './ProductDisplay';
+import OrderHeader from '../common/OrderHeader';
+import ProductDisplay from '../common/ProductDisplay';
 import OrderOptions from './OrderOptions';
-import OrderSummary from './OrderSummary';
+import OrderSummary from '../common/OrderSummary';
 import AdditionalOptions from './AdditionalOptions';
+import { useOrder } from '@/hooks/useOrder';
 import type { MenuItem } from '@/lib/definitions';
 
-interface OrderClientProps {
+interface StandardOrderClientProps {
   item: MenuItem;
 }
 
-export default function OrderClient({ item }: OrderClientProps) {
-  const [quantity, setQuantity] = useState(1);
-  const [mode, setMode] = useState<'onsite' | 'takeaway'>('onsite');
-  const [size, setSize] = useState<'s' | 'm' | 'l'>('m');
-  const [sugar, setSugar] = useState<0 | 1 | 2 | 3>(1);
+export default function StandardOrderClient({ item }: StandardOrderClientProps) {
+  const {
+    quantity,
+    mode,
+    size,
+    sugar,
+    total,
+    setQuantity,
+    setMode,
+    setSize,
+    setSugar,
+  } = useOrder(item);
 
   const handleNext = () => {
     // Placeholder for next step logic
@@ -23,7 +30,7 @@ export default function OrderClient({ item }: OrderClientProps) {
   };
 
   return (
-    <main className="min-h-screen bg-[#F8F8F8] flex flex-col items-center px-2 pb-8">
+    <main className="min-h-screen bg-[#F8F8F8] flex flex-col items-center px-2 pb-18">
       <div className="w-full max-w-md mx-auto bg-white rounded-2xl shadow-lg overflow-hidden mt-2">
         <OrderHeader onBack={() => window.history.back()} />
         <div className="p-4 flex flex-col gap-4">
@@ -41,8 +48,8 @@ export default function OrderClient({ item }: OrderClientProps) {
             onSizeChange={setSize}
             onSugarChange={setSugar}
           />
-          <AdditionalOptions />
-          <OrderSummary price={item.price} quantity={quantity} onNext={handleNext} />
+          <AdditionalOptions to="customise" />
+          <OrderSummary total={total} onNext={handleNext} />
         </div>
       </div>
     </main>
