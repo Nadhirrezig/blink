@@ -1,0 +1,54 @@
+{
+  "development": {
+    "type": "sqlite",
+    "database": "database/blink_user_db.sqlite",
+    "options": {
+      "foreign_keys": true,
+      "journal_mode": "WAL",
+      "synchronous": "NORMAL",
+      "cache_size": 10000,
+      "temp_store": "MEMORY"
+    }
+  },
+  "test": {
+    "type": "sqlite",
+    "database": "database/test_blink_user_db.sqlite",
+    "options": {
+      "foreign_keys": true
+    }
+  },
+  "production": {
+    "type": "postgresql",
+    "host": "${DB_HOST}",
+    "port": "${DB_PORT}",
+    "database": "${DB_NAME}",
+    "username": "${DB_USER}",
+    "password": "${DB_PASSWORD}",
+    "options": {
+      "ssl": true,
+      "pool": {
+        "min": 2,
+        "max": 10,
+        "idle_timeout": 30000,
+        "acquire_timeout": 60000
+      }
+    }
+  },
+  "staging": {
+    "type": "postgresql",
+    "host": "${STAGING_DB_HOST}",
+    "port": "${STAGING_DB_PORT}",
+    "database": "${STAGING_DB_NAME}",
+    "username": "${STAGING_DB_USER}",
+    "password": "${STAGING_DB_PASSWORD}",
+    "options": {
+      "ssl": true,
+      "pool": {
+        "min": 1,
+        "max": 5,
+        "idle_timeout": 30000,
+        "acquire_timeout": 60000
+      }
+    }
+  }
+}
