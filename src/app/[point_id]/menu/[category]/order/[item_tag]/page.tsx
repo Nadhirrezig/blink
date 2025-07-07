@@ -44,6 +44,6 @@ export default async function OrderPage({ params }: OrderPageProps) {
   if (!item) return notFound();
 
   return (
-    <StandardOrderClient item={item} />
+    <StandardOrderClient item={item} pointId={resolvedParams.point_id} />
   );
 }

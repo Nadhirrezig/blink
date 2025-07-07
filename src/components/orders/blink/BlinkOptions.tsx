@@ -10,12 +10,12 @@ import {
 
 interface BlinkOptionsProps {
   barista: string | null;
-  strength: 'light' | 'strong';
+  strength: 'light' | 'medium' | 'strong';
   note: string;
   syrup: string | null;
   additives: string[];
   onBaristaChange: (barista: string | null) => void;
-  onStrengthChange: (strength: 'light' | 'strong') => void;
+  onStrengthChange: (strength: 'light' | 'medium' | 'strong') => void;
   onNoteChange: (note: string) => void;
   onSyrupChange: (syrup: string | null) => void;
   onAdditivesChange: (additives: string[]) => void;
@@ -67,6 +67,18 @@ export default function BlinkOptions({
               aria-label="Light coffee"
             />
             <span className="text-sm text-[#1D1721]">Light</span>
+          </label>
+          <label className="flex items-center gap-2 cursor-pointer select-none">
+            <input
+              type="radio"
+              name="coffee-strength"
+              checked={strength === 'medium'}
+              onChange={() => onStrengthChange('medium')}
+              className="accent-[#EEA4CE] w-5 h-5 rounded focus:ring-2 focus:ring-[#EEA4CE]"
+              aria-checked={strength === 'medium'}
+              aria-label="meduim coffee"
+            />
+            <span className="text-sm text-[#1D1721]">Medium</span>
           </label>
           <label className="flex items-center gap-2 cursor-pointer select-none">
             <input

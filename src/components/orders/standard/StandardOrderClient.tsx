@@ -6,12 +6,15 @@ import OrderSummary from '../common/OrderSummary';
 import AdditionalOptions from './AdditionalOptions';
 import { useOrder } from '@/hooks/useOrder';
 import type { MenuItem } from '@/lib/definitions';
+import type { OrderPayload } from '@/lib/type';
+import { useRouter, usePathname } from 'next/navigation';
 
 interface StandardOrderClientProps {
   item: MenuItem;
+  pointId: string;
 }
 
-export default function StandardOrderClient({ item }: StandardOrderClientProps) {
+export default function StandardOrderClient({ item, pointId }: StandardOrderClientProps) {
   const {
     quantity,
     mode,
@@ -24,15 +27,41 @@ export default function StandardOrderClient({ item }: StandardOrderClientProps) 
     setSugar,
   } = useOrder(item);
 
-  const handleNext = () => {
-    // Placeholder for next step logic
-    alert('Order placed!');
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleSubmit = () => {
+    try {
+      const payload: OrderPayload = {
+        pointId,
+        itemTag: item.itemId,
+        quantity,
+        mode,
+        size,
+        sugar,
+        total,
+      };
+      console.log(payload);
+    } catch (err) {
+      console.error('Order submission error:', err);
+    }
+  };
+
+  const handleBlinkCustomise = () => {
+    const params = new URLSearchParams({
+      quantity: String(quantity),
+      mode,
+      size,
+      sugar: String(sugar),
+      total: String(total),
+    });
+    router.push(`${pathname}/customise?${params.toString()}`);
   };
 
   return (
     <main className="min-h-screen bg-[#F8F8F8] flex flex-col items-center px-2 pb-18">
       <div className="w-full max-w-md mx-auto bg-white rounded-2xl shadow-lg overflow-hidden mt-2">
-        <OrderHeader onBack={() => window.history.back()} />
+        <OrderHeader />
         <div className="p-4 flex flex-col gap-4">
           <ProductDisplay
             name={item.name}
@@ -48,8 +77,8 @@ export default function StandardOrderClient({ item }: StandardOrderClientProps) 
             onSizeChange={setSize}
             onSugarChange={setSugar}
           />
-          <AdditionalOptions to="customise" />
-          <OrderSummary total={total} onNext={handleNext} />
+          <AdditionalOptions to="customise" onClick={handleBlinkCustomise} />
+          <OrderSummary total={total} onNext={handleSubmit} />
         </div>
       </div>
     </main>

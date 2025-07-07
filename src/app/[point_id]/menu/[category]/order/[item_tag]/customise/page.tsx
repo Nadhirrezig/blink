@@ -44,6 +44,6 @@ export default async function CustomisePage({ params }: CustomisePageProps) {
   if (!item) return notFound();
 
   return (
-    <BlinkOrderClient item={item} />
+    <BlinkOrderClient item={item} pointId={resolvedParams.point_id} />
   );
 }

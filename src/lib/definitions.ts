@@ -131,3 +131,14 @@ export interface MostOrderedItemTrend {
   item: MenuItem;
   orderCount: number;
 }
+
+export interface StandardOrderClientProps {
+  item: MenuItem;
+  pointId: string;
+  blinkAssemblage?: boolean;
+  barista?: string | null;
+  strength?: 'light' | 'medium' | 'strong';
+  note?: string;
+  syrup?: string | null;
+  additives?: string[];
+}
